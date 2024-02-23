@@ -69,27 +69,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 id == R.id.numBtn4 || id == R.id.numBtn5 || id == R.id.numBtn6 || id == R.id.numBtn7 ||
                 id == R.id.numBtn8 || id == R.id.numBtn9) {
             textView.setText(value + buttonText);
+
         } else if (id == R.id.subtractBtn) {
             // Handle subtractBtn click
-            num1 = value;
-            operator = "-";
-            textView.setText("");
+            if (value.equals("")) {
+                textView.setText("-");
+            } else {
+                num1 = value;
+                operator = "-";
+                textView.setText("");
+            }
+
 
         } else if (id == R.id.addBtn) {
             // Handle addBtn click
-            num1 = value;
-            operator = "+";
-            textView.setText("");
+            if (value.isEmpty()) {
+                textView.setText("Error");
+            } else {
+                num1 = value;
+                operator = "+";
+                textView.setText("");
+            }
+
         } else if (id == R.id.divideBtn) {
             // Handle divideBtn click
-            num1 = value;
-            operator = "/";
-            textView.setText("");
+            if (value.isEmpty()) {
+                textView.setText("Error");
+            } else {
+                num1 = value;
+                operator = "/";
+                textView.setText("");
+            }
+
         } else if (id == R.id.multBtn) {
             // Handle multBtn click
-            num1 = value;
-            operator = "*";
-            textView.setText("");
+            if (value.isEmpty()) {
+                textView.setText("Error");
+            } else {
+                num1 = value;
+                operator = "*";
+                textView.setText("");
+            }
         } else if (id == R.id.clearBtn) {
             // Clear textView
             textView.setText("");
@@ -126,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (two != 0) {
                     result = one / two;
                 } else {
-                    textView.setText("Error: Division by zero");
+                    textView.setText("Error");
                     return;
                 }
                 break;
